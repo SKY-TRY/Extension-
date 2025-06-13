@@ -1,0 +1,211 @@
+/* Extension Popup Styles - Tailwind-inspired */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #010101 !important;
+  color: #f4f4f5;
+  font-family: 'PT Sans', sans-serif;
+  min-width: 350px;
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #f25b5b;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #cbd5e1;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #1e293b;
+  color: #f1f5f9;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #f25b5b;
+  box-shadow: 0 0 0 3px rgba(242, 91, 91, 0.1);
+}
+
+.select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  background: #1e293b;
+  color: #f1f5f9;
+  font-size: 14px;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #f25b5b;
+}
+
+.button {
+  width: 100%;
+  padding: 12px;
+  background: #f25b5b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover:not(:disabled) {
+  background: #e04848;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.results {
+  margin-top: 20px;
+}
+
+.result-card {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.result-header {
+  display: flex;
+  justify-content: between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.result-title {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.rating {
+  background: #f25b5b;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.result-text {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #cbd5e1;
+  margin-bottom: 8px;
+}
+
+.copy-button {
+  background: #334155;
+  color: #f1f5f9;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.copy-button:hover {
+  background: #475569;
+}
+
+.copied {
+  background: #10b981 !important;
+}
+
+.bg-icon {
+  position: absolute;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+.bg-icon.ai-file         { top: 18px; left: 18px; width: 36px; height: 36px; }
+.bg-icon.brain-teasers1  { top: 18px; right: 18px; width: 36px; height: 36px; }
+.bg-icon.brain-teasers2  { bottom: 18px; left: 18px; width: 36px; height: 36px; }
+.bg-icon.brain-training  { bottom: 18px; right: 18px; width: 36px; height: 36px; }
+.bg-icon.brain-waves     { top: 50%; left: 8px; width: 32px; height: 32px; transform: translateY(-50%); }
+.bg-icon.idea-submission { top: 50%; right: 8px; width: 32px; height: 32px; transform: translateY(-50%); }
+.bg-icon.magic-pen       { bottom: 60px; left: 50%; width: 40px; height: 40px; transform: translateX(-50%); }
+.bg-icon.startup-idea    { bottom: 18px; left: 50%; width: 40px; height: 40px; transform: translateX(-50%); }

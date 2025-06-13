@@ -1,0 +1,11 @@
+
+{
+  "name": "promptweaver-extension",
+  "version": "1.0.0",
+  "description": "Chrome extension build tools for PromptWeaver",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "package": "npm run build && zip -r promptweaver-extension.zip . -x '*.json' 'build.js' 'node_modules/*' '*.md'"
+  }
+}

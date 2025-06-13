@@ -1,0 +1,399 @@
+/* PromptWeaver Sidebar Extension Styles - Injected into any webpage */
+
+/* Namespace all styles to avoid conflicts with host page */
+.promptweaver-sidebar-container {
+  all: initial;
+  position: fixed !important;
+  top: 0 !important;
+  right: -320px !important;
+  width: 320px !important;
+  height: 100vh !important;
+  background: #1a1a1a !important;
+  border-left: 1px solid #2a2a2a !important;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3) !important;
+  display: none !important;
+  flex-direction: column !important;
+  z-index: 2147483647 !important; /* Maximum z-index */
+  transition: right 0.3s ease-in-out !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #ffffff !important;
+  box-sizing: border-box !important;
+}
+
+.promptweaver-sidebar-container.promptweaver-visible {
+  right: 0 !important;
+}
+
+.promptweaver-sidebar-container.promptweaver-minimized {
+  width: 60px !important;
+}
+
+.promptweaver-sidebar-content {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  position: relative !important;
+}
+
+/* Header */
+.promptweaver-sidebar-header {
+  background: #1a1a1a !important;
+  border-bottom: 1px solid #2a2a2a !important;
+  padding: 16px 20px !important;
+  flex-shrink: 0 !important;
+}
+
+.promptweaver-header-content {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.promptweaver-sidebar-title {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.promptweaver-header-buttons {
+  display: flex !important;
+  gap: 8px !important;
+}
+
+.promptweaver-minimize-btn,
+.promptweaver-close-btn {
+  background: transparent !important;
+  border: none !important;
+  color: #888 !important;
+  cursor: pointer !important;
+  padding: 4px !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.promptweaver-minimize-btn:hover,
+.promptweaver-close-btn:hover {
+  background: #2a2a2a !important;
+  color: #fff !important;
+}
+
+/* Content */
+.promptweaver-sidebar-body {
+  flex: 1 !important;
+  padding: 24px 20px !important;
+  overflow-y: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 24px !important;
+}
+
+.promptweaver-form-section {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+}
+
+.promptweaver-input-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.promptweaver-input-label {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #e0e0e0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.promptweaver-prompt-textarea {
+  background: #2a2a2a !important;
+  border: 1px solid #3a3a3a !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  resize: vertical !important;
+  min-height: 100px !important;
+  transition: all 0.2s ease !important;
+  font-family: inherit !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.promptweaver-prompt-textarea:focus {
+  outline: none !important;
+  border-color: #F15B5B !important;
+  box-shadow: 0 0 0 3px rgba(241, 91, 91, 0.1) !important;
+}
+
+.promptweaver-prompt-textarea::placeholder {
+  color: #888 !important;
+}
+
+.promptweaver-prompt-select {
+  background: #2a2a2a !important;
+  border: 1px solid #3a3a3a !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-family: inherit !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.promptweaver-prompt-select:focus {
+  outline: none !important;
+  border-color: #F15B5B !important;
+  box-shadow: 0 0 0 3px rgba(241, 91, 91, 0.1) !important;
+}
+
+.promptweaver-prompt-select option {
+  background: #2a2a2a !important;
+  color: #ffffff !important;
+}
+
+/* Refine Button */
+.promptweaver-refine-button {
+  background: #F15B5B !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 14px 20px !important;
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+  font-family: inherit !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.promptweaver-refine-button:hover:not(:disabled) {
+  background: #e04848 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(241, 91, 91, 0.3) !important;
+}
+
+.promptweaver-refine-button:active {
+  transform: translateY(0) !important;
+}
+
+.promptweaver-refine-button:disabled {
+  opacity: 0.7 !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.promptweaver-button-spinner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+}
+
+.promptweaver-spinner {
+  width: 16px !important;
+  height: 16px !important;
+  border: 2px solid transparent !important;
+  border-top: 2px solid currentColor !important;
+  border-radius: 50% !important;
+  animation: promptweaver-spin 1s linear infinite !important;
+}
+
+@keyframes promptweaver-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Error Message */
+.promptweaver-error-message {
+  background: #2d1b1b !important;
+  border: 1px solid #5a2d2d !important;
+  border-radius: 8px !important;
+  padding: 12px 16px !important;
+  color: #ff6b6b !important;
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
+}
+
+/* Results Section */
+.promptweaver-results-section {
+  margin-top: 8px !important;
+}
+
+.promptweaver-results-title {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  margin: 0 0 16px 0 !important;
+  padding: 0 !important;
+}
+
+.promptweaver-results-container {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.promptweaver-result-card {
+  background: #2a2a2a !important;
+  border: 1px solid #3a3a3a !important;
+  border-radius: 8px !important;
+  padding: 16px !important;
+  transition: all 0.2s ease !important;
+}
+
+.promptweaver-result-card:hover {
+  border-color: #4a4a4a !important;
+  background: #2d2d2d !important;
+}
+
+.promptweaver-result-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-bottom: 12px !important;
+}
+
+.promptweaver-result-title {
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  color: #e0e0e0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.promptweaver-result-rating {
+  background: #F15B5B !important;
+  color: #ffffff !important;
+  padding: 4px 8px !important;
+  border-radius: 12px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+}
+
+.promptweaver-result-text {
+  color: #cccccc !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  margin-bottom: 12px !important;
+  word-wrap: break-word !important;
+  margin-top: 0 !important;
+}
+
+.promptweaver-copy-button {
+  background: #3a3a3a !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 8px 12px !important;
+  color: #e0e0e0 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  font-family: inherit !important;
+}
+
+.promptweaver-copy-button:hover {
+  background: #4a4a4a !important;
+}
+
+.promptweaver-copy-button.promptweaver-copied {
+  background: #10b981 !important;
+  color: #ffffff !important;
+}
+
+/* Minimized State */
+.promptweaver-minimized-state {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  z-index: 10 !important;
+}
+
+.promptweaver-expand-btn {
+  background: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 8px !important;
+  padding: 12px 8px !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+  font-family: inherit !important;
+}
+
+.promptweaver-expand-btn:hover {
+  background: #2a2a2a !important;
+  transform: scale(1.05) !important;
+}
+
+.promptweaver-expand-icon {
+  font-size: 16px !important;
+}
+
+.promptweaver-expand-text {
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  writing-mode: vertical-rl !important;
+  text-orientation: mixed !important;
+}
+
+/* Scrollbar Styling */
+.promptweaver-sidebar-body::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.promptweaver-sidebar-body::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+
+.promptweaver-sidebar-body::-webkit-scrollbar-thumb {
+  background: #3a3a3a !important;
+  border-radius: 3px !important;
+}
+
+.promptweaver-sidebar-body::-webkit-scrollbar-thumb:hover {
+  background: #4a4a4a !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+  .promptweaver-sidebar-container {
+    width: 100vw !important;
+    right: -100vw !important;
+  }
+  
+  .promptweaver-sidebar-container.promptweaver-visible {
+    right: 0 !important;
+  }
+  
+  .promptweaver-sidebar-container.promptweaver-minimized {
+    width: 60px !important;
+    right: -60px !important;
+  }
+  
+  .promptweaver-sidebar-container.promptweaver-minimized.promptweaver-visible {
+    right: 0 !important;
+  }
+}

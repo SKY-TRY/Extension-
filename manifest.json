@@ -7,15 +7,19 @@
     "activeTab",
     "storage"
   ],
-  "action": {
-    "default_popup": "popup.html",
-    "default_title": "PromptWeaver",
-    "default_icon": {
-      "16": "icons/icon-16.png",
-      "32": "icons/icon-32.png",
-      "48": "icons/icon-48.png",
-      "128": "icons/icon-128.png"
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["sidebar.css"],
+      "run_at": "document_end"
     }
+  ],
+  "action": {
+    "default_title": "Toggle PromptWeaver Sidebar"
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "icons": {
     "16": "icons/icon-16.png",

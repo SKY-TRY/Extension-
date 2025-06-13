@@ -5,20 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PromptWeaver</title>
   <link rel="stylesheet" href="popup.css">
-  <!-- Add Google Fonts for PT Sans -->
-  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Imported SVG icons for background -->
-  <img src="icons/ai-file.svg" class="bg-icon ai-file" alt="AI File Icon" />
-  <img src="icons/brain-teasers1.svg" class="bg-icon brain-teasers1" alt="Brain Teasers 1 Icon" />
-  <img src="icons/brain-teasers2.svg" class="bg-icon brain-teasers2" alt="Brain Teasers 2 Icon" />
-  <img src="icons/brain-training.svg" class="bg-icon brain-training" alt="Brain Training Icon" />
-  <img src="icons/brain-waves.svg" class="bg-icon brain-waves" alt="Brain Waves Icon" />
-  <img src="icons/idea-submission.svg" class="bg-icon idea-submission" alt="Idea Submission Icon" />
-  <img src="icons/magic-pen.svg" class="bg-icon magic-pen" alt="Magic Writing Pen Icon" />
-  <img src="icons/startup-idea.svg" class="bg-icon startup-idea" alt="Startup Idea Icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div id="root"></div>
+  <div class="sidebar-container">
+    <div class="sidebar-header">
+      <div class="header-content">
+        <h1 class="sidebar-title">🧠 PromptWeaver</h1>
+        <button class="minimize-btn" id="minimizeBtn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar-content" id="sidebarContent">
+      <div class="form-section">
+        <div class="input-group">
+          <label for="promptInput" class="input-label">Enter your idea</label>
+          <textarea 
+            id="promptInput" 
+            class="prompt-textarea"
+            placeholder="Describe what you want to create a prompt for..."
+            rows="4"
+          ></textarea>
+        </div>
+
+        <div class="input-group">
+          <label for="promptLevel" class="input-label">Prompt Level</label>
+          <select id="promptLevel" class="prompt-select">
+            <option value="Quick">Quick</option>
+            <option value="Balanced" selected>Balanced</option>
+            <option value="Creative">Creative</option>
+            <option value="Detailed">Detailed</option>
+            <option value="Comprehensive">Comprehensive</option>
+          </select>
+        </div>
+
+        <button id="refineBtn" class="refine-button">
+          <span class="button-text">Refine Prompt</span>
+          <div class="button-spinner" style="display: none;">
+            <div class="spinner"></div>
+            <span>Refining...</span>
+          </div>
+        </button>
+      </div>
+
+      <div id="errorMessage" class="error-message" style="display: none;"></div>
+      
+      <div id="resultsSection" class="results-section" style="display: none;">
+        <h3 class="results-title">Refined Prompts</h3>
+        <div id="resultsContainer" class="results-container"></div>
+      </div>
+    </div>
+
+    <!-- Minimized state -->
+    <div class="minimized-state" id="minimizedState" style="display: none;">
+      <button class="expand-btn" id="expandBtn">
+        <span class="expand-icon">🧠</span>
+        <span class="expand-text">PromptWeaver</span>
+      </button>
+    </div>
+  </div>
+
   <script src="popup.js"></script>
 </body>
 </html>

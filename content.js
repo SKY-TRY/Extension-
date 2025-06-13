@@ -4,20 +4,44 @@ class PromptWeaverSidebar {
     this.isVisible = false;
     this.isMinimized = false;
     this.sidebarElement = null;
+    this.messageListener = null;
     this.init();
   }
 
   init() {
+    // Prevent multiple instances
+    if (document.getElementById('promptweaver-sidebar')) {
+      return;
+    }
+
     this.createSidebar();
     this.attachEventListeners();
     this.loadStoredData();
-    
-    // Listen for messages from background script
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-      if (request.action === 'toggle-sidebar') {
-        this.toggleSidebar();
+    this.setupMessageListener();
+  }
+
+  setupMessageListener() {
+    // Remove existing listener if any
+    if (this.messageListener) {
+      chrome.runtime.onMessage.removeListener(this.messageListener);
+    }
+
+    // Create new listener
+    this.messageListener = (request, sender, sendResponse) => {
+      try {
+        if (request.action === 'toggle-sidebar') {
+          this.toggleSidebar();
+          sendResponse({ success: true });
+        }
+      } catch (error) {
+        console.error('Error handling message:', error);
+        sendResponse({ success: false, error: error.message });
       }
-    });
+      return true; // Keep message channel open for async response
+    };
+
+    // Add listener
+    chrome.runtime.onMessage.addListener(this.messageListener);
   }
 
   createSidebar() {
@@ -34,7 +58,7 @@ class PromptWeaverSidebar {
             <div class="promptweaver-header-buttons">
               <button class="promptweaver-minimize-btn" id="promptweaver-minimize">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M18 6L6 18M6 6l12 12"/>
+                  <path d="M6 9l6 6 6-6"/>
                 </svg>
               </button>
               <button class="promptweaver-close-btn" id="promptweaver-close">
@@ -156,7 +180,7 @@ class PromptWeaverSidebar {
     }
     
     // Save visibility state
-    chrome.storage.local.set({ isVisible: this.isVisible });
+    this.saveToStorage({ isVisible: this.isVisible });
   }
 
   toggleMinimize() {
@@ -175,12 +199,12 @@ class PromptWeaverSidebar {
     }
     
     // Save minimized state
-    chrome.storage.local.set({ isMinimized: this.isMinimized });
+    this.saveToStorage({ isMinimized: this.isMinimized });
   }
 
   async loadStoredData() {
     try {
-      const result = await chrome.storage.local.get([
+      const result = await this.getFromStorage([
         'promptInput', 
         'promptLevel', 
         'isVisible',
@@ -214,12 +238,35 @@ class PromptWeaverSidebar {
       const promptInput = document.getElementById('promptweaver-prompt-input');
       const promptLevel = document.getElementById('promptweaver-prompt-level');
       
-      await chrome.storage.local.set({
+      await this.saveToStorage({
         promptInput: promptInput?.value || '',
         promptLevel: promptLevel?.value || 'Balanced'
       });
     } catch (error) {
       console.log('Could not save form data');
+    }
+  }
+
+  // Helper methods for storage with error handling
+  async saveToStorage(data) {
+    try {
+      if (chrome.storage && chrome.storage.local) {
+        await chrome.storage.local.set(data);
+      }
+    } catch (error) {
+      console.log('Storage not available:', error);
+    }
+  }
+
+  async getFromStorage(keys) {
+    try {
+      if (chrome.storage && chrome.storage.local) {
+        return await chrome.storage.local.get(keys);
+      }
+      return {};
+    } catch (error) {
+      console.log('Storage not available:', error);
+      return {};
     }
   }
 

@@ -5,7 +5,8 @@
   "description": "Refine your ideas into powerful AI prompts",
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "scripting"
   ],
   "content_scripts": [
     {
@@ -29,5 +30,8 @@
   },
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
-  }
+  },
+  "host_permissions": [
+    "<all_urls>"
+  ]
 }
